@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AddFavGenre.h" />
+    <ClInclude Include="AddPlaylist.h" />
+    <ClInclude Include="AddSong.h" />
     <ClInclude Include="ChangeBirth.h" />
     <ClInclude Include="ChangeName.h" />
     <ClInclude Include="ChangePassword.h" />
@@ -153,6 +155,7 @@
     <ClInclude Include="Playlist.h" />
     <ClInclude Include="PrintUserPlaylist.h" />
     <ClInclude Include="RemoveFavGenre.h" />
+    <ClInclude Include="RemovePlaylist.h" />
     <ClInclude Include="SignUpCommand.h" />
     <ClInclude Include="Song.h" />
     <ClInclude Include="StartCommand.h" />
@@ -162,6 +165,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddFavGenre.cpp" />
+    <ClCompile Include="AddPlaylist.cpp" />
+    <ClCompile Include="AddSong.cpp" />
     <ClCompile Include="ChangeBirth.cpp" />
     <ClCompile Include="ChangeName.cpp" />
     <ClCompile Include="ChangePassword.cpp" />
@@ -175,6 +180,7 @@
     <ClCompile Include="Playlist.cpp" />
     <ClCompile Include="PrintUserPlaylist.cpp" />
     <ClCompile Include="RemoveFavGenre.cpp" />
+    <ClCompile Include="RemovePlaylist.cpp" />
     <ClCompile Include="SignUpCommand.cpp" />
     <ClCompile Include="Song.cpp" />
     <ClCompile Include="Source.cpp" />

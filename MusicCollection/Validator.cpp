@@ -130,5 +130,31 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 		}
 		else return false;
 	}
-
+	else if (words[0] == "addsong")
+	{
+		//input --> addsong playlist name artist genre album day month year
+		if (words[0] == cmd->toString() && words.size() == 9)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else if (words[0] == "addplaylist")
+	{
+		//input --> addplaylist playlist
+		if (words[0] == cmd->toString() && words.size() == 2)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else if (words[0] == "removeplaylist")
+	{
+		//input --> removeplaylist playlist
+		if (words[0] == cmd->toString() && words.size() == 2)
+		{
+			return true;
+		}
+		else return false;
+	}
 }

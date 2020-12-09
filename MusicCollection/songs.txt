@@ -1,1 +1,6 @@
-God is a woman,Ariana Grande,pop,Womanity,20/01/2019,0,5
+God is a woman,Ariana Grande,pop,Womanity,20/1/2019,0,5
+without me,halsey,R&B,no album,17/2/2019,0,5
+Without me,Halsey,R&B,no album,17/2/2019,0,5
+Umbrella,Rihanna,pop,Good girl gone bad:Reloaded,5/9/2008,0,5
+Ocean Drive,Duke Dumont,dance,Duality,17/6/2016,0,5
+Samo za nju,Saban Saulic,pop-folk,Samo za nju,4/10/1988,0,5

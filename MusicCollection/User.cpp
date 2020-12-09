@@ -161,7 +161,6 @@ void User::savePlaylists(std::ofstream& os)
 		for (int j = 0; j<playlists[i]->getSongs().size(); j++)
 		{
 			playlists[i]->getSongs()[j]->save(os);
-			os << '\n';
 		}
 	}
 }

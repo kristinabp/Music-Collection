@@ -146,6 +146,10 @@ void System::loadUserPlaylists()
 						std::string playlistName = curRow;
 						std::getline(inputFile, curRow);
 						int numberOfSongs = std::stoi(curRow);
+						if (numberOfSongs == 0)
+						{
+							users[i]->createPlaylist(new Playlist(playlistName));
+						}
 						for (int k = 0; k < numberOfSongs; k++)
 						{
 							std::string songName, artist, genre, album, d, m, y, votes, rating;
@@ -288,6 +292,19 @@ void System::updateSongs(const std::string& fileName)
 	}
 }
 
+void System::updatePlaylists(const std::string& fileName)
+{
+	if (std::ifstream(fileName).good())
+	{
+		std::ofstream ofs(fileName);
+
+		for (int i = 0; i < users.size(); i++)
+		{
+			users[i]->savePlaylists(ofs);
+		}
+		ofs.close();
+	}
+}
 
 System::System() :users(std::vector<User*>()), songs(std::vector<Song*>()), userInSystem(false), curUser("")
 {
@@ -486,7 +503,44 @@ void System::addSong(const std::string& playlist, const std::string& name, const
 				users[i]->addSongToPlaylist(playlist, new Song(name, artist, genre, album, Date(day, month, year)));
 				songs.push_back(new Song(name, artist, genre, album, Date(day, month, year)));
 				updateSongs("songs.txt");
+				updatePlaylists("playlists.txt");
 				std::cout << "Successfully added song " << artist << "-" << name << " to playlist " << playlist << ".\n";
+				break;
+			}
+		}
+	}
+	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
+}
+
+void System::addPlaylist(const std::string& playlist)
+{
+	if (userInSystem)
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (users[i]->getUsername() == curUser)
+			{
+				users[i]->createPlaylist(new Playlist(playlist));
+				std::cout << "Successfully created a playlist with name " << playlist << ".\n";
+				updatePlaylists("playlists.txt");
+				break;
+			}
+		}
+	}
+	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
+}
+
+void System::removePlaylist(const std::string& playlist)
+{
+	if (userInSystem)
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (users[i]->getUsername() == curUser)
+			{
+				users[i]->removePlaylist(new Playlist(playlist));
+				std::cout << "Successfully removed a playlist with name " << playlist << ".\n";
+				updatePlaylists("playlists.txt");
 				break;
 			}
 		}
@@ -510,9 +564,9 @@ void System::help() const
 	std::cout << "removefavouritegenre,<genre>\n";
 	std::cout << "printuserplaylist,<name of playlist>";
 	std::cout << "addsong,<playlist name>,<song name>,<artist>,<genre>,<album>,<day>,<month>,<year>\n";
-	std::cout << "ratesong,<song name>,<rate>";
-	std::cout << "";
-	std::cout << "";
+	std::cout << "ratesong,<song name>,<rate>\n";
+	std::cout << "addplaylist,<playlist name>\n";
+	std::cout << "removeplaylist,<playlist name>\n";
 	std::cout << "";
 	std::cout << "";
 	std::cout << "";

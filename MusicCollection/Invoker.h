@@ -14,6 +14,9 @@
 #include"StartCommand.h"
 #include"HelpCommand.h"
 #include"PrintUserPlaylist.h"
+#include"AddSong.h"
+#include"AddPlaylist.h"
+#include"RemovePlaylist.h"
 #include"Validator.h"
 #include<vector>
 #include<string>

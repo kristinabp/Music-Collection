@@ -14,7 +14,9 @@ Invoker::Invoker() : receiver(new System())
 	commands.push_back(new RemoveFavGenre(*receiver));
 	commands.push_back(new HelpCommand(*receiver));
 	commands.push_back(new PrintUserPlaylist(*receiver));
-
+	commands.push_back(new AddSong(*receiver));
+	commands.push_back(new AddPlaylist(*receiver));
+	commands.push_back(new RemovePlaylist(*receiver));
 }
 
 Invoker::Invoker(ICommand* command) : receiver(new System())
