@@ -207,6 +207,33 @@ void System::loadUserPlaylists()
 	else std::cout << "Couldn't open " << "playlists.txt" << "\n";
 }
 
+void System::loadRates()
+{
+	std::ifstream inputFile;
+	inputFile.open("rates.txt", std::ios::in);
+
+	if (inputFile.is_open())
+	{
+		std::string curRow;
+		int usersNum = 0;
+		while (std::getline(inputFile, curRow))
+		{
+			rates.push_back(std::vector<bool>(songs.size()));
+			for (int i = 0; i != '\n'; i++)
+			{
+				if (i != '\t')
+				{
+					rates[usersNum].push_back(curRow[i]);
+				}
+			}
+			usersNum++;
+		}
+		
+		inputFile.close();
+	}
+	else std::cout << "Couldn't open " << "rates.txt" << "\n";
+}
+
 std::string System::readFromFileHelper(const std::string& input, int pos)
 {
 	std::string output;
@@ -306,8 +333,28 @@ void System::updatePlaylists(const std::string& fileName)
 	}
 }
 
-System::System() :users(std::vector<User*>()), songs(std::vector<Song*>()), userInSystem(false), curUser("")
+void System::updateRates()
 {
+	if (std::ifstream("rates.txt").good())
+	{
+		std::ofstream ofs("rates.txt");
+
+		for (int i = 0; i < rates.size(); i++)
+		{
+			for (int j = 0; j < songs.size(); j++)
+			{
+				ofs << rates[i][j] << '\t';
+			}
+			ofs << '\n';
+		}
+		ofs.close();
+	}
+}
+
+System::System() :users(std::vector<User*>()), songs(std::vector<Song*>()), userInSystem(false), curUser(""),
+rates(std::vector<std::vector<bool>>())
+{
+	start();
 }
 
 void System::start()
@@ -315,6 +362,7 @@ void System::start()
 	loadSongs();
 	loadUsers();
 	loadUserPlaylists();
+	loadRates();
 	std::cout << "Welcome to Krisi's music player application!\n";
 	std::cout << "login\t signup\n";
 }
@@ -541,6 +589,39 @@ void System::removePlaylist(const std::string& playlist)
 				users[i]->removePlaylist(new Playlist(playlist));
 				std::cout << "Successfully removed a playlist with name " << playlist << ".\n";
 				updatePlaylists("playlists.txt");
+				break;
+			}
+		}
+	}
+	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
+}
+
+void System::rateSong(const std::string& name, int rate)
+{
+	if (userInSystem)
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (users[i]->getUsername() == curUser)
+			{
+				for (int j = 0; j < songs.size(); j++)
+				{
+					if (songs[j]->getName() == name)
+					{
+						if (!rates[i][j])
+						{
+							songs[j]->rate(rate);
+							rates[i][j] = true;
+							updateRates();
+							updateSongs("songs.txt");
+							updatePlaylists("playlists.txt");
+							std::cout << "You voted for " << name << ". Current rate is " << songs[j]->getRating() << "\n";
+						}
+						else std::cout << "You have already voted for " << name << "\n";
+					
+						break;
+					}
+				}
 				break;
 			}
 		}

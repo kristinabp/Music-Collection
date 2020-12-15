@@ -10,11 +10,13 @@ private:
 	std::vector<User*> users;
 	std::vector<Song*> songs;
 	std::string curUser;
+	std::vector<std::vector<bool>> rates;
 	bool userInSystem;
 
 	void loadSongs();
 	void loadUsers();
 	void loadUserPlaylists();
+	void loadRates();
 	std::string readFromFileHelper(const std::string& input, int pos);
 	bool checkUser(const std::string& username, const std::string& password);
 	bool checkUsername(const std::string& username);
@@ -22,6 +24,7 @@ private:
 	void update(const std::string& fileName);
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
+	void updateRates();
 
 public:
 	System();

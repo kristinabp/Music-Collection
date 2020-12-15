@@ -154,6 +154,7 @@
     <ClInclude Include="LogOutCommand.h" />
     <ClInclude Include="Playlist.h" />
     <ClInclude Include="PrintUserPlaylist.h" />
+    <ClInclude Include="RateCommand.h" />
     <ClInclude Include="RemoveFavGenre.h" />
     <ClInclude Include="RemovePlaylist.h" />
     <ClInclude Include="SignUpCommand.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="LogOutCommand.cpp" />
     <ClCompile Include="Playlist.cpp" />
     <ClCompile Include="PrintUserPlaylist.cpp" />
+    <ClCompile Include="RateCommand.cpp" />
     <ClCompile Include="RemoveFavGenre.cpp" />
     <ClCompile Include="RemovePlaylist.cpp" />
     <ClCompile Include="SignUpCommand.cpp" />

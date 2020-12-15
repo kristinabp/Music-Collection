@@ -157,4 +157,17 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 		}
 		else return false;
 	}
+	else if (words[0] == "rate")
+	{
+	//input --> rate name rate
+		if (words[0] == cmd->toString() && words.size() == 3)
+		{
+			return true;
+		}
+		else return false;
+	}
+	else
+	{
+		std::cout << "Wrong commnad. Try again.\n";
+    }
 }

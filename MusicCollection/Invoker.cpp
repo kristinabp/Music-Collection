@@ -17,6 +17,7 @@ Invoker::Invoker() : receiver(new System())
 	commands.push_back(new AddSong(*receiver));
 	commands.push_back(new AddPlaylist(*receiver));
 	commands.push_back(new RemovePlaylist(*receiver));
+	commands.push_back(new RateCommand(*receiver));
 }
 
 Invoker::Invoker(ICommand* command) : receiver(new System())

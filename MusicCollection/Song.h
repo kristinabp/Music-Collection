@@ -27,6 +27,7 @@ public:
 
 	std::string getName()const;
 	std::string getArtist()const;
+	double getRating()const;
 
 	void rate(int n);
 

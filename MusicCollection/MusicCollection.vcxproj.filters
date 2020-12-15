@@ -84,6 +84,9 @@
     <ClInclude Include="RemovePlaylist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RateCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="User.cpp">
@@ -156,6 +159,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RemovePlaylist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RateCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
