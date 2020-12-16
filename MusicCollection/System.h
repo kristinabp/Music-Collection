@@ -25,6 +25,7 @@ private:
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
 	void updateRates();
+	void filterByRate(int rate);
 
 public:
 	System();
@@ -45,9 +46,9 @@ public:
 	void addPlaylist(const std::string& playlist);
 	void removePlaylist(const std::string& playlist);
 	void rateSong(const std::string& name,int rate);
+	void filter(const std::string& filters);
 
 	void help()const;
 	void printUserPlaylist(const std::string& playlist);
-	void print()const;
 };
 #endif // !SYSTEM_H

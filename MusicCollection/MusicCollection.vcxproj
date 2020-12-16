@@ -147,6 +147,7 @@
     <ClInclude Include="ChangePassword.h" />
     <ClInclude Include="ChangeUsernameCommand.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="FilteredSongs.h" />
     <ClInclude Include="HelpCommand.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="Invoker.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="ChangePassword.cpp" />
     <ClCompile Include="ChangeUsernameCommand.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="FilteredSongs.cpp" />
     <ClCompile Include="HelpCommand.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="Invoker.cpp" />

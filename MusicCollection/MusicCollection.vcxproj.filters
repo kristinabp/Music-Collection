@@ -87,6 +87,9 @@
     <ClInclude Include="RateCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FilteredSongs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="User.cpp">
@@ -162,6 +165,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RateCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilteredSongs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

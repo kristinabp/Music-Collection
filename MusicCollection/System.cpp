@@ -214,21 +214,21 @@ void System::loadRates()
 
 	if (inputFile.is_open())
 	{
-		std::string curRow;
-		int usersNum = 0;
+		std::string curRow;;
 		while (std::getline(inputFile, curRow))
 		{
-			rates.push_back(std::vector<bool>(songs.size()));
-			for (int i = 0; i != '\n'; i++)
+			std::vector<bool> r;
+			for (char c : curRow)
 			{
-				if (i != '\t')
+				if (c != '\t')
 				{
-					rates[usersNum].push_back(curRow[i]);
+					if (c == '0') r.push_back(false);
+					else r.push_back(true);
 				}
 			}
-			usersNum++;
+			rates.push_back(r);
 		}
-		
+
 		inputFile.close();
 	}
 	else std::cout << "Couldn't open " << "rates.txt" << "\n";
@@ -348,6 +348,20 @@ void System::updateRates()
 			ofs << '\n';
 		}
 		ofs.close();
+	}
+}
+
+void System::filterByRate(int rate)
+{
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (curUser == users[i]->getUsername())
+		{
+			for (int j = 0; j < songs.size(); j++)
+			{
+				
+			}
+		}
 	}
 }
 
@@ -600,6 +614,11 @@ void System::rateSong(const std::string& name, int rate)
 {
 	if (userInSystem)
 	{
+		if (rate > 5 || rate < 0)
+		{
+			std::cout << "The rate must be between 0 and 5 :).\n";
+			return;
+		}
 		for (int i = 0; i < users.size(); i++)
 		{
 			if (users[i]->getUsername() == curUser)
@@ -645,11 +664,11 @@ void System::help() const
 	std::cout << "removefavouritegenre,<genre>\n";
 	std::cout << "printuserplaylist,<name of playlist>";
 	std::cout << "addsong,<playlist name>,<song name>,<artist>,<genre>,<album>,<day>,<month>,<year>\n";
-	std::cout << "ratesong,<song name>,<rate>\n";
+	std::cout << "rate,<song name>,<rate>\n";
 	std::cout << "addplaylist,<playlist name>\n";
 	std::cout << "removeplaylist,<playlist name>\n";
-	std::cout << "";
-	std::cout << "";
+	std::cout << "addplaylist,<playlist name>\n";
+	std::cout << "help\n";
 	std::cout << "";
 	std::cout << "------------------------\n";
 }
@@ -681,14 +700,3 @@ void System::printUserPlaylist(const std::string& playlist)
 	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
 }
 
-void System::print() const
-{
-	for (int i = 0; i < songs.size(); i++)
-	{
-		songs[i]->print();
-	}
-	for (int i = 0; i < users.size(); i++)
-	{
-		users[i]->print();
-	}
-}

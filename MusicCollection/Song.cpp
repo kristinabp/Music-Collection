@@ -48,5 +48,5 @@ void Song::save(std::ofstream& os)
 void Song::print() const
 {
 	std::cout << artist << "-" << name << ", " << genre << ", " << album << ", " << dateOfRelease << ", " << votes <<
-		", " << rating << '\n';
+		", " << rating / votes << '\n';
 }
