@@ -157,9 +157,18 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 		}
 		else return false;
 	}
+	else if (words[0] == "filter")
+	{
+		//input --> filter filters playlist
+		if (words[0] == cmd->toString() && words.size() == 3)
+		{
+			return true;
+		}
+		else return false;
+	}
 	else if (words[0] == "rate")
 	{
-	//input --> rate name rate
+		//input --> rate song rate
 		if (words[0] == cmd->toString() && words.size() == 3)
 		{
 			return true;

@@ -33,6 +33,21 @@ double Song::getRating() const
 	return rating/votes;
 }
 
+std::string Song::getGenre() const
+{
+	return genre;
+}
+
+std::string Song::getAlbum() const
+{
+	return album;
+}
+
+Date Song::getDateOfRelease() const
+{
+	return dateOfRelease;
+}
+
 void Song::rate(int n)
 {
 	votes++;

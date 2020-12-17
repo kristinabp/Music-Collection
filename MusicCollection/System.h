@@ -2,7 +2,9 @@
 #define SYSTEM_H
 
 #include "User.h"
+#include "AlphabeticalSortedSongs.h" 
 #include <fstream>
+#include <stack>
 
 class System
 {
@@ -25,7 +27,10 @@ private:
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
 	void updateRates();
-	void filterByRate(int rate);
+	void filterByRate(int rate,AlphabeticalSortedSongs& s);
+	void filterHelper(std::string input,std::stack<std::string> &filters, std::stack<std::string> &op);
+
+	bool isChar(char c) const;
 
 public:
 	System();
@@ -43,10 +48,10 @@ public:
 	void removeFavGenre(const std::string& genre);
 	void addSong(const std::string& playlist, const std::string& name, const std::string& artist, const std::string& genre,
 		const std::string& album, int day, int month, int year);
-	void addPlaylist(const std::string& playlist);
+	bool addPlaylist(const std::string& playlist);
 	void removePlaylist(const std::string& playlist);
 	void rateSong(const std::string& name,int rate);
-	void filter(const std::string& filters);
+	void filter(const std::string& input, const std::string& playlistName);
 
 	void help()const;
 	void printUserPlaylist(const std::string& playlist);

@@ -84,10 +84,13 @@
     <ClInclude Include="RemovePlaylist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RateCommand.h">
+    <ClInclude Include="AlphabeticalSortedSongs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FilteredSongs.h">
+    <ClInclude Include="FilterCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RateCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,10 +167,13 @@
     <ClCompile Include="RemovePlaylist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RateCommand.cpp">
+    <ClCompile Include="AlphabeticalSortedSongs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FilteredSongs.cpp">
+    <ClCompile Include="FilterCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RateCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

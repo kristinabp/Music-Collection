@@ -17,6 +17,7 @@
 #include"AddSong.h"
 #include"AddPlaylist.h"
 #include"RemovePlaylist.h"
+#include"FilterCommand.h"
 #include"RateCommand.h"
 #include"Validator.h"
 #include<vector>

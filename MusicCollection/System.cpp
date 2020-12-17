@@ -351,7 +351,7 @@ void System::updateRates()
 	}
 }
 
-void System::filterByRate(int rate)
+void System::filterByRate(int rate,AlphabeticalSortedSongs &s)
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -359,10 +359,72 @@ void System::filterByRate(int rate)
 		{
 			for (int j = 0; j < songs.size(); j++)
 			{
-				
+				if (songs[j]->getRating() >= rate)
+				{
+					s.insert(songs[j]);
+				}
 			}
 		}
 	}
+}
+
+void System::filterHelper(std::string input,std::stack<std::string>& filters, std::stack<std::string>& operations)
+{
+	std::string curFilter;
+	std::string curOp;
+	for (int i = 0; i < input.size(); i++)
+	{
+		if (input[i] >= 'a' && input[i] <= 'z')
+		{
+			curFilter.push_back(input[i]);
+		}
+		else if (input[i] == '&')
+		{
+			filters.push(curFilter);
+			curFilter = "";
+			curOp.push_back(input[i]);
+			curOp.push_back(input[++i]);
+			operations.push(curOp);
+			curOp = "";
+		}
+		else if (input[i] == '|')
+		{
+			filters.push(curFilter);
+			curFilter = "";
+			if (!operations.empty() && operations.top() == "&&")
+			{
+				std::stack<std::string> temp;
+				while (!operations.empty() && operations.top() == "&&")
+				{
+					temp.push(operations.top());
+					operations.pop();
+				}
+				curOp.push_back(input[i]);
+				curOp.push_back(input[++i]);
+				operations.push(curOp);
+				curOp = "";
+				while (!temp.empty())
+				{
+					operations.push(temp.top());
+					temp.pop();
+				}
+			}
+			else
+			{
+				curOp.push_back(input[i]);
+				curOp.push_back(input[++i]);
+				operations.push(curOp);
+				curOp = "";
+			}
+		}
+	}
+	filters.push(curFilter);
+	curFilter = "";
+}
+
+bool System::isChar(char c) const
+{
+	return c >= 'a' && c <= 'z';
 }
 
 System::System() :users(std::vector<User*>()), songs(std::vector<Song*>()), userInSystem(false), curUser(""),
@@ -574,7 +636,7 @@ void System::addSong(const std::string& playlist, const std::string& name, const
 	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
 }
 
-void System::addPlaylist(const std::string& playlist)
+bool System::addPlaylist(const std::string& playlist)
 {
 	if (userInSystem)
 	{
@@ -582,12 +644,20 @@ void System::addPlaylist(const std::string& playlist)
 		{
 			if (users[i]->getUsername() == curUser)
 			{
-				users[i]->createPlaylist(new Playlist(playlist));
-				std::cout << "Successfully created a playlist with name " << playlist << ".\n";
-				updatePlaylists("playlists.txt");
-				break;
+				if (users[i]->createPlaylist(new Playlist(playlist)))
+				{
+					std::cout << "Successfully created a playlist with name " << playlist << ".\n";
+					updatePlaylists("playlists.txt");
+					return true;
+				}
+				else
+				{
+					std::cout << "Not created a playlist with name " << playlist << ".\n";
+					return false;
+				}
 			}
 		}
+		return false;
 	}
 	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
 }
@@ -644,6 +714,147 @@ void System::rateSong(const std::string& name, int rate)
 				break;
 			}
 		}
+	}
+	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
+}
+
+void System::filter(const std::string& input, const std::string& playlistName)
+{
+	if (userInSystem)
+	{
+		if (addPlaylist(playlistName))
+		{
+			std::stack<std::string> filters;
+			std::stack<std::string> operations;
+			AlphabeticalSortedSongs filteredSongs;
+			filterHelper(input, filters, operations);
+			if (filters.size() == 1)
+			{
+				if (filters.top() == "rate")
+				{
+					std::string rate;
+					std::cout << "With a rating above: ";
+					std::getline(std::cin, rate);
+					filterByRate(std::stoi(rate), filteredSongs);
+					for (int i = 0; i < filteredSongs.sizee(); i++)
+					{
+						addSong(playlistName, filteredSongs.getSongs()[i]->getName(), 
+							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(), 
+							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
+					}
+				}
+				else if (filters.top() == "genre")
+				{
+
+				}
+				else if (filters.top() == "!genre")
+				{
+
+				}
+				else if (filters.top() == "before")
+				{
+
+				}
+				else if (filters.top() == "after")
+				{
+
+				}
+				else if (filters.top() == "from")
+				{
+
+				}
+				else if (filters.top() == "fav")
+				{
+
+				}
+			}
+			else {
+				while (!filters.empty())
+				{
+					std::string filter1 = filters.top();
+					filters.pop();
+					std::string filter2 = filters.top();
+					filters.pop();
+					std::string op = operations.top();
+					operations.pop();
+					if (op == "||")
+					{
+						if (filter1 == "rate")
+						{
+							std::string rate;
+							std::cout << "With a rating above: ";
+							std::getline(std::cin, rate);
+							filterByRate(std::stoi(rate), filteredSongs);
+							filteredSongs.print();
+						}
+						else if (filter1 == "genre")
+						{
+
+						}
+						else if (filter1 == "!genre")
+						{
+
+						}
+						else if (filter1 == "before")
+						{
+
+						}
+						else if (filter1 == "after")
+						{
+
+						}
+						else if (filter1 == "from")
+						{
+
+						}
+						else if (filter1 == "fav")
+						{
+
+						}
+
+						if (filter2 == "rate")
+						{
+							/*std::string rate;
+							std::cout << "With a rating above: ";
+							std::cin.ignore();
+							std::getline(std::cin, rate);
+							filterByRate(std::stoi(rate));*/
+						}
+						else if (filter2 == "genre")
+						{
+
+						}
+						else if (filter2 == "!genre")
+						{
+
+						}
+						else if (filter2 == "before")
+						{
+
+						}
+						else if (filter2 == "after")
+						{
+
+						}
+						else if (filter2 == "from")
+						{
+
+						}
+						else if (filter2 == "fav")
+						{
+
+						}
+					}
+					else if (op == "&&")
+					{
+
+					}
+				}
+			}
+		}
+		else std::cout << "Choose a different name for this playlist.\n";
 	}
 	else std::cout << "ERROR: NO USER IN SYSTEM!\n";
 }

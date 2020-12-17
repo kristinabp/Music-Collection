@@ -87,7 +87,7 @@ void User::addFavGenre(const std::string& genre)
 	favouriteGenres.push_back(genre);
 }
 
-void User::createPlaylist(Playlist* playlist)
+bool User::createPlaylist(Playlist* playlist)
 {
 	bool playlistExists=false;
 	for (int i = 0; i < playlists.size(); i++)
@@ -99,10 +99,15 @@ void User::createPlaylist(Playlist* playlist)
 		}
 	}
 
-	if (playlistExists) std::cout << "Playlist exists with this name.\n";
+	if (playlistExists)
+	{
+		std::cout << "Playlist exists with this name.\n";
+		return false;
+	}
 	else
 	{
 		playlists.push_back(playlist->clone());
+		return true;
 	}
 }
 

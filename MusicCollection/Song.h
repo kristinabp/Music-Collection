@@ -28,7 +28,9 @@ public:
 	std::string getName()const;
 	std::string getArtist()const;
 	double getRating()const;
-
+	std::string getGenre()const;
+	std::string getAlbum()const;
+	Date getDateOfRelease()const;
 	void rate(int n);
 
 	void save(std::ofstream& os);

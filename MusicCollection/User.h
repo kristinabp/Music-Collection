@@ -35,7 +35,7 @@ public:
 	void removeFavGenre(const std::string& genre);
 	void addFavGenre(const std::string& genre);
 
-	void createPlaylist(Playlist* playlist);
+	bool createPlaylist(Playlist* playlist);
 	void removePlaylist(Playlist* playlist);
 	void addSongToPlaylist(std::string pl, Song* song);
 
