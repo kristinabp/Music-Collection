@@ -28,7 +28,7 @@ private:
 	Node* rightLeftRotation(Node* node);
 	Node*& balance(Node*& node);
 	Node* insertHelper(Node*& node, Song* element);
-	std::vector<Song*> songHelper(Node*& node);
+	void songHelper(Node*& node, std::vector<Song>& s);
 
 public:
 	AlphabeticalSortedSongs();
@@ -37,7 +37,7 @@ public:
 	bool contains(Song* element) const;
 	void remove(Song* element);
 	int sizee()const;
-	std::vector<Song*> getSongs();
+	std::vector<Song> getSongs();
 
 	void print()const;
 	~AlphabeticalSortedSongs();

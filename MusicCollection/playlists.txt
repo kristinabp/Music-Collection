@@ -1,28 +1,26 @@
 kristinabp
-4
+6
 lubimi
 4
 God is a women,Ariana Grande,pop,Womanity,20/1/2019,0,0
 Without me,Halsey,R&B,no album,17/2/2019,0,0
 Umbrella,Rihanna,pop,Good girl gone bad:Reloaded,5/9/2008,0,0
 Ocean Drive,Duke Dumont,dance,Duality,17/6/2016,0,0
-filtered
+rate
 0
-g
+rate0
 0
-1
+222
+0
+eeee
+0
+rerere
 0
 icakus
-4
+1
 srubsko
 1
 Samo za nju,Saban Saulic,pop-folk,Samo za nju,4/10/1988,0,0
-i
-0
-p
-0
-f
-0
 krissyp
 1
 lubimi

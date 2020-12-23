@@ -211,17 +211,13 @@ AlphabeticalSortedSongs::Node* AlphabeticalSortedSongs::insertHelper(Node*& node
 	return node;
 }
 
-std::vector<Song*> AlphabeticalSortedSongs::songHelper(Node*& node)
-{
-	if (root == nullptr) return std::vector<Song*>();
-	std::vector<Song*> s;
-	songHelper(root->left);
-	s.push_back(root->data);
-	songHelper(root->right);
-
-	return s;
+void AlphabeticalSortedSongs::songHelper(Node*& node, std::vector<Song*>& s)
+{   
+	if (root == nullptr) return;
+	songHelper(root->left,s);
+	s->push_back(root->data->clone());
+	songHelper(root->right,s);
 }
-
 
 AlphabeticalSortedSongs::AlphabeticalSortedSongs(): root(nullptr), size(0)
 {
@@ -257,7 +253,7 @@ int AlphabeticalSortedSongs::sizee() const
 std::vector<Song*> AlphabeticalSortedSongs::getSongs() 
 {
 	std::vector<Song*> songs;
-	songs = songHelper(root);
+	songHelper(root, songs);
 	return songs;
 }
 

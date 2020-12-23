@@ -28,6 +28,9 @@ private:
 	void updatePlaylists(const std::string& fileName);
 	void updateRates();
 	void filterByRate(int rate,AlphabeticalSortedSongs& s);
+	void filterByGenre(const std::string& genre, bool flag, AlphabeticalSortedSongs& s);
+	void filterByYear(const std::string& time,int year, AlphabeticalSortedSongs& s);
+	void filterFav(AlphabeticalSortedSongs& s);
 	void filterHelper(std::string input,std::stack<std::string> &filters, std::stack<std::string> &op);
 
 	bool isChar(char c) const;

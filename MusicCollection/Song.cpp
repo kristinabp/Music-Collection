@@ -7,7 +7,7 @@ Song::Song(const std::string& n, const std::string& a, const std::string& g, con
 	votes = 0;
 }
 
-Song::Song(const std::string& n, const std::string& a, const std::string& g, const std::string& album, 
+Song::Song(const std::string& n, const std::string& a, const std::string& g, const std::string& album,
 	const Date& date, int v, double r) : name(n), artist(a), genre(g), album(album), dateOfRelease(date),
 	                                                     votes(v), rating(r)
 {
@@ -30,6 +30,7 @@ std::string Song::getArtist() const
 
 double Song::getRating() const
 {
+	if (votes == 0)return 0;
 	return rating/votes;
 }
 

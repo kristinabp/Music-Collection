@@ -57,7 +57,6 @@ void System::loadSongs()
 				curPos++;
 			}
 			rating = std::stod(temp2);
-
 			songs.push_back(new Song(name, artist, genre, album, Date(std::stoi(day), std::stoi(month), std::stoi(year)), 
 				                                                                                  votes, rating));
 		}
@@ -362,6 +361,94 @@ void System::filterByRate(int rate,AlphabeticalSortedSongs &s)
 				if (songs[j]->getRating() >= rate)
 				{
 					s.insert(songs[j]);
+				}
+			}
+		}
+	}
+}
+
+void System::filterByGenre(const std::string& genre, bool flag, AlphabeticalSortedSongs& s)
+{
+	if (flag)//true when is filtered by genre
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (curUser == users[i]->getUsername())
+			{
+				for (int j = 0; j < songs.size(); j++)
+				{
+					if (songs[j]->getGenre() == genre)
+					{
+						s.insert(songs[j]);
+					}
+				}
+			}
+		}
+	}
+	else// false when is filtered by !genre
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (curUser == users[i]->getUsername())
+			{
+				for (int j = 0; j < songs.size(); j++)
+				{
+					if (songs[j]->getGenre() != genre)
+					{
+						s.insert(songs[j]);
+					}
+				}
+			}
+		}
+	}
+}
+
+void System::filterByYear(const std::string& time, int year, AlphabeticalSortedSongs& s)
+{
+	if (time == "before")
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (curUser == users[i]->getUsername())
+			{
+				for (int j = 0; j < songs.size(); j++)
+				{
+					if (songs[j]->getDateOfRelease().getYear() >= year)
+					{
+						s.insert(songs[j]);
+					}
+				}
+			}
+		}
+	}
+	else if (time == "after")
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (curUser == users[i]->getUsername())
+			{
+				for (int j = 0; j < songs.size(); j++)
+				{
+					if (songs[j]->getDateOfRelease().getYear() <= year)
+					{
+						s.insert(songs[j]);
+					}
+				}
+			}
+		}
+	}
+	else if (time == "from")
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			if (curUser == users[i]->getUsername())
+			{
+				for (int j = 0; j < songs.size(); j++)
+				{
+					if (songs[j]->getDateOfRelease().getYear() == year)
+					{
+						s.insert(songs[j]);
+					}
 				}
 			}
 		}
@@ -747,23 +834,78 @@ void System::filter(const std::string& input, const std::string& playlistName)
 				}
 				else if (filters.top() == "genre")
 				{
-
+					std::string genre;
+					std::cout << "Genre: ";
+					std::getline(std::cin, genre);
+					filterByGenre(genre, true, filteredSongs);
+					for (int i = 0; i < filteredSongs.sizee(); i++)
+					{
+						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
+							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
+							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
+					}
 				}
 				else if (filters.top() == "!genre")
 				{
-
+					std::string genre;
+					std::cout << "!Genre: ";
+					std::getline(std::cin, genre);
+					filterByGenre(genre, false, filteredSongs);
+					for (int i = 0; i < filteredSongs.sizee(); i++)
+					{
+						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
+							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
+							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
+					}
 				}
 				else if (filters.top() == "before")
 				{
-
+					std::string year;
+					std::cout << "Year: ";
+					std::getline(std::cin, year);
+					filterByYear("before", std::stoi(year), filteredSongs);
+					for (int i = 0; i < filteredSongs.sizee(); i++)
+					{
+						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
+							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
+							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
+					}
 				}
 				else if (filters.top() == "after")
 				{
-
+					std::string year;
+					std::cout << "Year: ";
+					std::getline(std::cin, year);
+					filterByYear("after", std::stoi(year), filteredSongs);
+					for (int i = 0; i < filteredSongs.sizee(); i++)
+					{
+						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
+							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
+							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
+					}
 				}
 				else if (filters.top() == "from")
 				{
-
+					std::string year;
+					std::cout << "Year: ";
+					std::getline(std::cin, year);
+					filterByYear("from", std::stoi(year), filteredSongs);
+					for (int i = 0; i < filteredSongs.sizee(); i++)
+					{
+						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
+							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
+							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
+							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
+					}
 				}
 				else if (filters.top() == "fav")
 				{
