@@ -1,4 +1,21 @@
 ﻿  AddFavGenre.cpp
+  AddPlaylist.cpp
+  AddSong.cpp
+  ChangeBirth.cpp
+  ChangeName.cpp
+  ChangePassword.cpp
+  ChangeUsernameCommand.cpp
+  FilterCommand.cpp
+  HelpCommand.cpp
+  Invoker.cpp
+  LogInCommand.cpp
+  LogOutCommand.cpp
+  PrintUserPlaylist.cpp
+  RateCommand.cpp
+  RemoveFavGenre.cpp
+  RemovePlaylist.cpp
+  SignUpCommand.cpp
+  Source.cpp
   StartCommand.cpp
   System.cpp
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(136,22): warning C4018: '<': signed/unsigned mismatch
@@ -11,8 +28,7 @@ C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCo
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(327,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(341,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(343,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(355,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(359,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(359,24): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(374,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(378,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(390,21): warning C4018: '<': signed/unsigned mismatch
@@ -23,20 +39,22 @@ C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCo
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(430,23): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(442,21): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(446,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(462,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(584,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(611,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(629,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(647,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(665,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(687,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(710,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(730,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(756,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(779,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(783,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(1034,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(1038,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(460,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(464,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(476,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(598,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(625,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(643,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(661,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(679,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(701,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(724,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(744,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(770,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(793,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(797,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(1006,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(1010,23): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(750): warning C4715: 'System::addPlaylist': not all control paths return a value
+C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\MusicCollection\System.cpp(764): warning C4715: 'System::addPlaylist': not all control paths return a value
   MusicCollection.vcxproj -> C:\Users\Krisi\OneDrive - uni-sofia.bg\Documents\GitHub\Music Collection\MusicCollection\Debug\MusicCollection.exe

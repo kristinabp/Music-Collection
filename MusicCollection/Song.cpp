@@ -30,8 +30,9 @@ std::string Song::getArtist() const
 
 double Song::getRating() const
 {
-	if (votes == 0)return 0;
-	return rating/votes;
+	if (votes == 0)
+		return 0;
+	else return rating/votes;
 }
 
 std::string Song::getGenre() const
@@ -63,6 +64,14 @@ void Song::save(std::ofstream& os)
 
 void Song::print() const
 {
-	std::cout << artist << "-" << name << ", " << genre << ", " << album << ", " << dateOfRelease << ", " << votes <<
-		", " << rating / votes << '\n';
+	if (votes == 0)
+	{
+		std::cout << artist << "-" << name << ", " << genre << ", " << album << ", " << dateOfRelease << ", " << votes <<
+			", " << 0 << '\n';
+	}
+	else
+	{
+		std::cout << artist << "-" << name << ", " << genre << ", " << album << ", " << dateOfRelease << ", " << votes <<
+			", " << rating / votes << '\n';
+	}
 }

@@ -20,10 +20,6 @@ public:
 	std::vector<Song*> getSongs() const;
 
 	void addSong(Song* song);
-
-	void filterPlaylistByRating(double value);
-	void filterPlaylistByGenre(std::string genre);
-	void filterPlaylistByYear(int year);
 	void print()const;
 
 };

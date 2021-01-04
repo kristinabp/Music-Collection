@@ -2,7 +2,7 @@
 #define SYSTEM_H
 
 #include "User.h"
-#include "AlphabeticalSortedSongs.h" 
+#include "OrderedBinaryTree.h" 
 #include <fstream>
 #include <stack>
 
@@ -27,10 +27,10 @@ private:
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
 	void updateRates();
-	void filterByRate(int rate,AlphabeticalSortedSongs& s);
-	void filterByGenre(const std::string& genre, bool flag, AlphabeticalSortedSongs& s);
-	void filterByYear(const std::string& time,int year, AlphabeticalSortedSongs& s);
-	void filterFav(AlphabeticalSortedSongs& s);
+	void filterByRate(int rate,OrderedBinaryTree& s);
+	void filterByGenre(const std::string& genre, bool flag, OrderedBinaryTree& s);
+	void filterByYear(const std::string& time,int year, OrderedBinaryTree& s);
+	void filterFav(OrderedBinaryTree& s);
 	void filterHelper(std::string input,std::stack<std::string> &filters, std::stack<std::string> &op);
 
 	bool isChar(char c) const;

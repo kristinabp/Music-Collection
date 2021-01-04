@@ -350,24 +350,24 @@ void System::updateRates()
 	}
 }
 
-void System::filterByRate(int rate,AlphabeticalSortedSongs &s)
+void System::filterByRate(int rate,OrderedBinaryTree &s)
 {
-	for (int i = 0; i < users.size(); i++)
+/*	for (int i = 0; i < users.size(); i++)
 	{
 		if (curUser == users[i]->getUsername())
 		{
-			for (int j = 0; j < songs.size(); j++)
+			*/for (int j = 0; j < songs.size(); j++)
 			{
 				if (songs[j]->getRating() >= rate)
 				{
 					s.insert(songs[j]);
 				}
 			}
-		}
-	}
+	/*	}
+	}*/
 }
 
-void System::filterByGenre(const std::string& genre, bool flag, AlphabeticalSortedSongs& s)
+void System::filterByGenre(const std::string& genre, bool flag, OrderedBinaryTree& s)
 {
 	if (flag)//true when is filtered by genre
 	{
@@ -385,7 +385,7 @@ void System::filterByGenre(const std::string& genre, bool flag, AlphabeticalSort
 			}
 		}
 	}
-	else// false when is filtered by !genre
+	else if(!flag)// false when is filtered by !genre
 	{
 		for (int i = 0; i < users.size(); i++)
 		{
@@ -403,7 +403,7 @@ void System::filterByGenre(const std::string& genre, bool flag, AlphabeticalSort
 	}
 }
 
-void System::filterByYear(const std::string& time, int year, AlphabeticalSortedSongs& s)
+void System::filterByYear(const std::string& time, int year, OrderedBinaryTree& s)
 {
 	if (time == "before")
 	{
@@ -455,13 +455,27 @@ void System::filterByYear(const std::string& time, int year, AlphabeticalSortedS
 	}
 }
 
+void System::filterFav(OrderedBinaryTree& s)
+{
+	for (int i = 0; i < users.size(); i++)
+	{
+		if (users[i]->getUsername() == curUser)
+		{
+			for (int j = 0; j < users[i]->getFavouriteGenres().size(); j++)
+			{
+				filterByGenre(users[i]->getFavouriteGenres()[j], true, s);
+			}
+		}
+	}
+}
+
 void System::filterHelper(std::string input,std::stack<std::string>& filters, std::stack<std::string>& operations)
 {
 	std::string curFilter;
 	std::string curOp;
 	for (int i = 0; i < input.size(); i++)
 	{
-		if (input[i] >= 'a' && input[i] <= 'z')
+		if ((input[i] >= 'a' && input[i] <= 'z' )|| input[i]=='!')
 		{
 			curFilter.push_back(input[i]);
 		}
@@ -813,7 +827,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 		{
 			std::stack<std::string> filters;
 			std::stack<std::string> operations;
-			AlphabeticalSortedSongs filteredSongs;
+			OrderedBinaryTree filteredSongs;
 			filterHelper(input, filters, operations);
 			if (filters.size() == 1)
 			{
@@ -823,14 +837,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					std::cout << "With a rating above: ";
 					std::getline(std::cin, rate);
 					filterByRate(std::stoi(rate), filteredSongs);
-					for (int i = 0; i < filteredSongs.sizee(); i++)
-					{
-						addSong(playlistName, filteredSongs.getSongs()[i]->getName(), 
-							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(), 
-							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
-					}
+					filteredSongs.print();
 				}
 				else if (filters.top() == "genre")
 				{
@@ -838,14 +845,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					std::cout << "Genre: ";
 					std::getline(std::cin, genre);
 					filterByGenre(genre, true, filteredSongs);
-					for (int i = 0; i < filteredSongs.sizee(); i++)
-					{
-						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
-							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
-							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
-					}
+					filteredSongs.print();
 				}
 				else if (filters.top() == "!genre")
 				{
@@ -853,14 +853,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					std::cout << "!Genre: ";
 					std::getline(std::cin, genre);
 					filterByGenre(genre, false, filteredSongs);
-					for (int i = 0; i < filteredSongs.sizee(); i++)
-					{
-						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
-							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
-							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
-					}
+					filteredSongs.print();
 				}
 				else if (filters.top() == "before")
 				{
@@ -868,14 +861,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					std::cout << "Year: ";
 					std::getline(std::cin, year);
 					filterByYear("before", std::stoi(year), filteredSongs);
-					for (int i = 0; i < filteredSongs.sizee(); i++)
-					{
-						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
-							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
-							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
-					}
+					filteredSongs.print();
 				}
 				else if (filters.top() == "after")
 				{
@@ -883,14 +869,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					std::cout << "Year: ";
 					std::getline(std::cin, year);
 					filterByYear("after", std::stoi(year), filteredSongs);
-					for (int i = 0; i < filteredSongs.sizee(); i++)
-					{
-						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
-							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
-							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
-					}
+					filteredSongs.print();
 				}
 				else if (filters.top() == "from")
 				{
@@ -898,18 +877,12 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					std::cout << "Year: ";
 					std::getline(std::cin, year);
 					filterByYear("from", std::stoi(year), filteredSongs);
-					for (int i = 0; i < filteredSongs.sizee(); i++)
-					{
-						addSong(playlistName, filteredSongs.getSongs()[i]->getName(),
-							filteredSongs.getSongs()[i]->getArtist(), filteredSongs.getSongs()[i]->getGenre(),
-							filteredSongs.getSongs()[i]->getAlbum(), filteredSongs.getSongs()[i]->getDateOfRelease().getDay(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getMonth(),
-							filteredSongs.getSongs()[i]->getDateOfRelease().getYear());
-					}
+					filteredSongs.print();
 				}
 				else if (filters.top() == "fav")
 				{
-
+					filterFav(filteredSongs);
+					filteredSongs.print();
 				}
 			}
 			else {
@@ -1020,7 +993,6 @@ void System::help() const
 	std::cout << "rate,<song name>,<rate>\n";
 	std::cout << "addplaylist,<playlist name>\n";
 	std::cout << "removeplaylist,<playlist name>\n";
-	std::cout << "addplaylist,<playlist name>\n";
 	std::cout << "help\n";
 	std::cout << "";
 	std::cout << "------------------------\n";

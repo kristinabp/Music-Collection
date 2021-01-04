@@ -84,13 +84,13 @@
     <ClInclude Include="RemovePlaylist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlphabeticalSortedSongs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FilterCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RateCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderedBinaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,13 +167,13 @@
     <ClCompile Include="RemovePlaylist.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlphabeticalSortedSongs.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FilterCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RateCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderedBinaryTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
