@@ -23,10 +23,13 @@ private:
 	bool checkUser(const std::string& username, const std::string& password);
 	bool checkUsername(const std::string& username);
 	bool checkFavGenre(const std::string& genre);
+	bool checkSong(const std::string& n, const std::string& a);
 	void update(const std::string& fileName);
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
 	void updateRates();
+	void updateRates2();
+	void updateRates3();
 	void filterByRate(int rate,OrderedBinaryTree& s);
 	void filterByGenre(const std::string& genre, bool flag, OrderedBinaryTree& s);
 	void filterByYear(const std::string& time,int year, OrderedBinaryTree& s);

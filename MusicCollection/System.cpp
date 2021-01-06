@@ -290,6 +290,19 @@ bool System::checkFavGenre(const std::string& genre)
 	return true;
 }
 
+bool System::checkSong(const std::string& n, const std::string& a)
+{
+	for (int i = 0; i < songs.size(); i++)
+	{
+		if (songs[i]->getName() == n && songs[i]->getArtist() == a)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void System::update(const std::string& fileName)
 {
 	if (std::ifstream(fileName).good())
@@ -347,6 +360,31 @@ void System::updateRates()
 			ofs << '\n';
 		}
 		ofs.close();
+	}
+}
+
+void System::updateRates2()
+{
+	//when we add new user, we add new row of 0
+	std::vector<bool> r;
+	for (int i = 0; i < songs.size(); i++)
+	{
+		r.push_back(false);
+	}
+
+	rates.push_back(r);
+}
+
+void System::updateRates3()
+{
+	//when we add new song, we add new column of 0
+	if (rates.size() == 0)
+	{
+		rates.push_back(std::vector<bool>());
+	}
+	for (int i = 0; i < rates.size(); i++)
+	{
+		rates[i].push_back(false);
 	}
 }
 
@@ -549,7 +587,7 @@ void System::signup(const std::string& username, const std::string& password, co
 {
 	if (!userInSystem)
 	{
-		if (checkUser(username, password))
+		if (checkUsername(username))
 		{
 			std::cout << "Sorry, but this username already exists. Try again with another username.\n";
 		}
@@ -560,6 +598,8 @@ void System::signup(const std::string& username, const std::string& password, co
 			userInSystem = true;
 			curUser = username;
 			update("users.txt");
+			updateRates2();
+			updateRates();
 		}
 	}
 	else std::cout << "ERROR:USER IN THE SYSTEM! => LOG OUT!\n";
@@ -727,6 +767,8 @@ void System::addSong(const std::string& playlist, const std::string& name, const
 			{
 				users[i]->addSongToPlaylist(playlist, new Song(name, artist, genre, album, Date(day, month, year)));
 				songs.push_back(new Song(name, artist, genre, album, Date(day, month, year)));
+				updateRates3();
+				updateRates();
 				updateSongs("songs.txt");
 				updatePlaylists("playlists.txt");
 				std::cout << "Successfully added song " << artist << "-" << name << " to playlist " << playlist << ".\n";
@@ -988,7 +1030,7 @@ void System::help() const
 	std::cout << "changefullname,<new name>\n";
 	std::cout << "addfavouritegenre,<genre>\n";
 	std::cout << "removefavouritegenre,<genre>\n";
-	std::cout << "printuserplaylist,<name of playlist>";
+	std::cout << "printuserplaylist,<name of playlist>\n";
 	std::cout << "addsong,<playlist name>,<song name>,<artist>,<genre>,<album>,<day>,<month>,<year>\n";
 	std::cout << "rate,<song name>,<rate>\n";
 	std::cout << "addplaylist,<playlist name>\n";

@@ -1,16 +1,4 @@
-kristinabp,123456789,Kristina Popova,5/9/1999
-2
-rok
-pop
-icakus,123456,Hristo Kostov,15/1/2020
-3
-folk
-srubsko
-pop
-krissyp,123456, Kristina B,12/12/2020
-3
-pop
-o
-folk
-bobitoni,123456,Borislav Popov,31/5/1970
+kr,1,KP,5/9/199
+0
+kristinabp,123456,Kristina Popova,5/9/1999
 0
