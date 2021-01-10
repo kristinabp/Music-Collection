@@ -52,6 +52,7 @@ Date Song::getDateOfRelease() const
 
 void Song::rate(int n)
 {
+	if (n > 5 || n < 0) return;
 	votes++;
 	rating += n;
 }

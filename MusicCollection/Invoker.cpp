@@ -4,7 +4,6 @@ Invoker::Invoker() : receiver(new System())
 {
 	commands.push_back(new LogInCommand(*receiver));
 	commands.push_back(new SignUpCommand(*receiver));
-	commands.push_back(new StartCommand(*receiver));
 	commands.push_back(new LogOutCommand(*receiver));
 	commands.push_back(new ChangeUsernameCommand(*receiver));
 	commands.push_back(new ChangePassword(*receiver));
@@ -19,6 +18,7 @@ Invoker::Invoker() : receiver(new System())
 	commands.push_back(new RemovePlaylist(*receiver));
 	commands.push_back(new FilterCommand(*receiver));
 	commands.push_back(new RateCommand(*receiver));
+	commands.push_back(new LoadPlaylist(*receiver));
 }
 
 Invoker::Invoker(ICommand* command) : receiver(new System())

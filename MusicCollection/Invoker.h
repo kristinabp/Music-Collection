@@ -11,7 +11,6 @@
 #include"AddFavGenre.h"
 #include"RemoveFavGenre.h"
 #include"SignUpCommand.h"
-#include"StartCommand.h"
 #include"HelpCommand.h"
 #include"PrintUserPlaylist.h"
 #include"AddSong.h"
@@ -19,6 +18,7 @@
 #include"RemovePlaylist.h"
 #include"FilterCommand.h"
 #include"RateCommand.h"
+#include"LoadPlaylist.h"
 #include"Validator.h"
 #include<vector>
 #include<string>

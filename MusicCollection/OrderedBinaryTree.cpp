@@ -110,6 +110,16 @@ void OrderedBinaryTree::printHelper(Node* root) const
 	printHelper(root->right);
 }
 
+void OrderedBinaryTree::getSortedSongsHelper(Node* root, std::vector<Song*>& songs)
+{
+	if (root == nullptr)
+		return;
+	
+	getSortedSongsHelper(root->left, songs);
+	songs.push_back(root->data);
+	getSortedSongsHelper(root->right, songs);
+}
+
 OrderedBinaryTree::OrderedBinaryTree() : root(nullptr), size(0)
 {
 }
@@ -136,6 +146,13 @@ void OrderedBinaryTree::remove(Song* element)
 int OrderedBinaryTree::sizee() const
 {
 	return size;
+}
+
+std::vector<Song*> OrderedBinaryTree::getSortedSongs() 
+{
+	std::vector<Song*> sortedSongs;
+	getSortedSongsHelper(root, sortedSongs);
+	return sortedSongs;
 }
 
 void OrderedBinaryTree::print() const

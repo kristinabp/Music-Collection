@@ -12,6 +12,7 @@ private:
 	std::vector<User*> users;
 	std::vector<Song*> songs;
 	std::string curUser;
+	std::string curPlaylist;
 	std::vector<std::vector<bool>> rates;
 	bool userInSystem;
 
@@ -23,7 +24,7 @@ private:
 	bool checkUser(const std::string& username, const std::string& password);
 	bool checkUsername(const std::string& username);
 	bool checkFavGenre(const std::string& genre);
-	bool checkSong(const std::string& n, const std::string& a);
+	int checkSong(const std::string& n, const std::string& a);
 	void update(const std::string& fileName);
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
@@ -35,7 +36,7 @@ private:
 	void filterByYear(const std::string& time,int year, OrderedBinaryTree& s);
 	void filterFav(OrderedBinaryTree& s);
 	void filterHelper(std::string input,std::stack<std::string> &filters, std::stack<std::string> &op);
-
+	void filterHelper2(std::vector<Song*> fSongs,const std::string& playlistName);
 	bool isChar(char c) const;
 
 public:
@@ -58,8 +59,8 @@ public:
 	void removePlaylist(const std::string& playlist);
 	void rateSong(const std::string& name,int rate);
 	void filter(const std::string& input, const std::string& playlistName);
-
+	void loadPlaylist(const std::string& playlist);
 	void help()const;
-	void printUserPlaylist(const std::string& playlist);
+	void printUserPlaylist();
 };
 #endif // !SYSTEM_H

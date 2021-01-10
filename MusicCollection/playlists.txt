@@ -5,7 +5,44 @@ k
 Hello,Beyonce,pop,-,1/1/2010,0,0
 God is a woman,Ariana Grande,pop,Womanity,1/1/2019,0,0
 kristinabp
-1
+9
 lubimi
+2
+Without me,Halsey,R&B,-,1/1/2018,0,0
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+rates
+3
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
+Without me,Halsey,R&B,-,1/1/2018,0,0
+filtergenres
+2
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
+before2
+3
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
+Without me,Halsey,R&B,-,1/1/2018,0,0
+after
+3
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
+Without me,Halsey,R&B,-,1/1/2018,0,0
+2019
 1
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+fav2
+2
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
+tworates
+3
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
+Without me,Halsey,R&B,-,1/1/2018,0,0
+rrr
+3
+God is a woman,Ariana Grande,pop,Womanity,1/1/2019,2,10
+Hello,Beyonce,pop,-,1/1/2010,1,5
 Without me,Halsey,R&B,-,1/1/2018,0,0

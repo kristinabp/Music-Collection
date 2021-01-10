@@ -22,16 +22,7 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 		i++;
 	}
 
-	if (words[0] == "start")
-	{
-		//input --> start
-		if (words[0] == cmd->toString() && words.size() == 1)
-		{
-			return true;
-		}
-		else return false;
-	}
-	else if (words[0] == "login")
+	if (words[0] == "login")
 	{
 		//input --> login username password
 		if (words[0] == cmd->toString() && words.size() == 3)
@@ -123,8 +114,8 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 	}
 	else if (words[0] == "printuserplaylist")
 	{
-		//input --> printuserplaylist playlistname
-		if (words[0] == cmd->toString() && words.size() == 2)
+		//input --> printuserplaylist 
+		if (words[0] == cmd->toString() && words.size() == 1)
 		{
 			return true;
 		}
@@ -174,6 +165,15 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 			return true;
 		}
 		else return false;
+	}
+	else if (words[0] == "loadplaylist")
+	{
+	//input --> loadplaylist playlistname
+	if (words[0] == cmd->toString() && words.size() == 2)
+	{
+		return true;
+	}
+	else return false;
 	}
 	else
 	{

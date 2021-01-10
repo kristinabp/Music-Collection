@@ -6,7 +6,7 @@ PrintUserPlaylist::PrintUserPlaylist(System& receiver) :receiver(receiver)
 
 void PrintUserPlaylist::execute()
 {
-	receiver.printUserPlaylist(parameters[1]);
+	receiver.printUserPlaylist();
 }
 
 void PrintUserPlaylist::unexecute()

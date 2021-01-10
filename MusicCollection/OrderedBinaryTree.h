@@ -2,6 +2,7 @@
 #define ORDEREDBINARYTREE_H
 
 #include "Song.h"
+#include<vector>
 
 class OrderedBinaryTree
 {
@@ -20,6 +21,7 @@ private:
 	Song* getMinElement(Node* node);
 	void eraseHelper(Node* node);
 	void printHelper(Node* root)const;
+	void getSortedSongsHelper(Node* root, std::vector<Song*> &songs);
 
 public:
 		OrderedBinaryTree();
@@ -27,6 +29,7 @@ public:
 		bool contains(Song* element) const;
 		void remove(Song* element);
 		int sizee()const;
+		std::vector<Song*> getSortedSongs();
 
 		void print()const;
 		~OrderedBinaryTree();
