@@ -157,7 +157,7 @@ void User::addSongToPlaylist(std::string pl, Song* song)
 
 }
 
-void User::savePlaylists(std::ofstream& os)
+void User::savePlaylists(std::ofstream& os) const
 {
 	os << username << '\n' << playlists.size() << '\n';
 	for (int i = 0; i < playlists.size(); i++)
@@ -170,7 +170,7 @@ void User::savePlaylists(std::ofstream& os)
 	}
 }
 
-void User::save(std::ofstream& os)
+void User::save(std::ofstream& os) const
 {
 	os << username << ',' << password << ',' << fullName << ',' << dateOfBirth << '\n';
 	os << favouriteGenres.size() << '\n';

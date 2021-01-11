@@ -32,6 +32,7 @@ public:
 	void changePassword(const std::string& newPassword);
 	void changeFullName(const std::string& newFullName);
 	void changeDateOfBirth(const Date& newDateOfBirth);
+
 	void removeFavGenre(const std::string& genre);
 	void addFavGenre(const std::string& genre);
 
@@ -39,8 +40,8 @@ public:
 	void removePlaylist(Playlist* playlist);
 	void addSongToPlaylist(std::string pl, Song* song);
 
-	void savePlaylists(std::ofstream& os);
-	void save(std::ofstream& os);
+	void savePlaylists(std::ofstream& os) const;
+	void save(std::ofstream& os) const;
 	void print()const;
 };
 #endif // !USER_H

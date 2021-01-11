@@ -21,7 +21,6 @@ public:
 
 	void addSong(Song* song);
 	void print()const;
-
 };
 
 #endif // !PLAYLIST_H

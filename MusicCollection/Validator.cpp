@@ -168,15 +168,15 @@ bool Validator::validateCommand(ICommand* cmd, std::string input)
 	}
 	else if (words[0] == "loadplaylist")
 	{
-	//input --> loadplaylist playlistname
-	if (words[0] == cmd->toString() && words.size() == 2)
-	{
-		return true;
-	}
-	else return false;
+		//input --> loadplaylist playlistname
+		if (words[0] == cmd->toString() && words.size() == 2)
+		{
+			return true;
+		}
+		else return false;
 	}
 	else
 	{
-		std::cout << "Wrong commnad. Try again.\n";
+		return false;
     }
 }

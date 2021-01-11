@@ -57,7 +57,7 @@ void Song::rate(int n)
 	rating += n;
 }
 
-void Song::save(std::ofstream& os)
+void Song::save(std::ofstream& os) const
 {
 	os << name << "," << artist << "," << genre << "," << album << "," << dateOfRelease << "," << votes <<
 		"," << rating << '\n';

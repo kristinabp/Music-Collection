@@ -33,7 +33,7 @@ public:
 	Date getDateOfRelease()const;
 	void rate(int n);
 
-	void save(std::ofstream& os);
+	void save(std::ofstream& os) const;
 	void print()const;
 };
 #endif // !SONG_H

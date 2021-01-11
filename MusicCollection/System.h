@@ -21,10 +21,10 @@ private:
 	void loadUserPlaylists();
 	void loadRates();
 	std::string readFromFileHelper(const std::string& input, int pos);
-	bool checkUser(const std::string& username, const std::string& password);
-	bool checkUsername(const std::string& username);
-	bool checkFavGenre(const std::string& genre);
-	int checkSong(const std::string& n, const std::string& a);
+	bool checkUser(const std::string& username, const std::string& password)const;
+	bool checkUsername(const std::string& username)const;
+	bool checkFavGenre(const std::string& genre)const;
+	int checkSong(const std::string& n, const std::string& a)const;
 	void update(const std::string& fileName);
 	void updateSongs(const std::string& fileName);
 	void updatePlaylists(const std::string& fileName);
@@ -38,11 +38,11 @@ private:
 	void filterHelper(std::string input,std::stack<std::string> &filters, std::stack<std::string> &op);
 	void filterHelper2(std::vector<Song*> fSongs,const std::string& playlistName);
 	bool isChar(char c) const;
+    void start();
 
 public:
 	System();
 
-	void start();
 	void signup(const std::string& username, const std::string& password, const std::string& name, int day, int month,
 	int year);
 	void login(const std::string& username, const std::string& password);
@@ -61,6 +61,6 @@ public:
 	void filter(const std::string& input, const std::string& playlistName);
 	void loadPlaylist(const std::string& playlist);
 	void help()const;
-	void printUserPlaylist();
+	void printUserPlaylist()const;
 };
 #endif // !SYSTEM_H

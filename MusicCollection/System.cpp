@@ -244,7 +244,7 @@ std::string System::readFromFileHelper(const std::string& input, int pos)
 	return output;
 }
 
-bool System::checkUser(const std::string& username, const std::string& password)
+bool System::checkUser(const std::string& username, const std::string& password)const
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -257,7 +257,7 @@ bool System::checkUser(const std::string& username, const std::string& password)
 	return false;
 }
 
-bool System::checkUsername(const std::string& username)
+bool System::checkUsername(const std::string& username)const
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -270,7 +270,7 @@ bool System::checkUsername(const std::string& username)
 	return false;
 }
 
-bool System::checkFavGenre(const std::string& genre)
+bool System::checkFavGenre(const std::string& genre)const
 {
 	for (int i = 0; i < users.size(); i++)
 	{
@@ -290,7 +290,7 @@ bool System::checkFavGenre(const std::string& genre)
 	return true;
 }
 
-int System::checkSong(const std::string& n, const std::string& a)
+int System::checkSong(const std::string& n, const std::string& a)const
 {
 	for (int i = 0; i < songs.size(); i++)
 	{
@@ -950,7 +950,7 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					filterHelper2(fSongs, playlistName);
 				}
 			}
-			else {
+			/*else {
 				while (!filters.empty())
 				{
 					std::string filter1 = filters.top();
@@ -963,132 +963,59 @@ void System::filter(const std::string& input, const std::string& playlistName)
 					{
 						if (filter1 == "rate")
 						{
-							std::string rate;
-							std::cout << "With a rating above: ";
-							std::getline(std::cin, rate);
-							filterByRate(std::stoi(rate), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter1 == "genre")
 						{
-							std::string genre;
-							std::cout << "Genre: ";
-							std::getline(std::cin, genre);
-							filterByGenre(genre, true, filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter1 == "!genre")
 						{
-							std::string genre;
-							std::cout << "!Genre: ";
-							std::getline(std::cin, genre);
-							filterByGenre(genre, false, filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter1 == "before")
 						{
-							std::string year;
-							std::cout << "Year: ";
-							std::getline(std::cin, year);
-							filterByYear("before", std::stoi(year), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter1 == "after")
 						{
-							std::string year;
-							std::cout << "Year: ";
-							std::getline(std::cin, year);
-							filterByYear("after", std::stoi(year), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter1 == "from")
 						{
-							std::string year;
-							std::cout << "Year: ";
-							std::getline(std::cin, year);
-							filterByYear("from", std::stoi(year), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter1 == "fav")
 						{
-							filterFav(filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 
 						if (filter2 == "rate")
 						{
-							std::string rate;
-							std::cout << "With a rating above: ";
-							std::getline(std::cin, rate);
-							filterByRate(std::stoi(rate), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter2 == "genre")
 						{
-							std::string genre;
-							std::cout << "Genre: ";
-							std::getline(std::cin, genre);
-							filterByGenre(genre, true, filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter2 == "!genre")
 						{
-							std::string genre;
-							std::cout << "!Genre: ";
-							std::getline(std::cin, genre);
-							filterByGenre(genre, false, filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						else if (filter2 == "before")
 						{
-
 						}
 						else if (filter2 == "after")
 						{
-
 						}
 						else if (filter2 == "from")
 						{
-
 						}
 						else if (filter2 == "fav")
 						{
-
 						}
 					}
 					else if (op == "&&")
 					{
 						if (filter1 == "rate")
 						{
-							std::string rate;
-							std::cout << "With a rating above: ";
-							std::getline(std::cin, rate);
-							filterByRate(std::stoi(rate), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 						if (filter2 == "rate")
 						{
-							std::string rate;
-							std::cout << "With a rating above: ";
-							std::getline(std::cin, rate);
-							filterByRate(std::stoi(rate), filteredSongs);
-							fSongs = filteredSongs.getSortedSongs();
-							filterHelper2(fSongs, playlistName);
 						}
 					}
 				}
-			}
+			}*/
 		}
 		else std::cout << "Choose a different name for this playlist.\n";
 	}
@@ -1140,7 +1067,7 @@ void System::help() const
 	std::cout << "changefullname,<new name>\n";
 	std::cout << "addfavouritegenre,<genre>\n";
 	std::cout << "removefavouritegenre,<genre>\n";
-	std::cout << "printuserplaylist,<name of playlist>\n";
+	std::cout << "printuserplaylist\n";
 	std::cout << "addsong,<playlist name>,<song name>,<artist>,<genre>,<album>,<day>,<month>,<year>\n";
 	std::cout << "rate,<song name>,<rate>\n";
 	std::cout << "addplaylist,<playlist name>\n";
@@ -1150,7 +1077,7 @@ void System::help() const
 	std::cout << "------------------------\n";
 }
 
-void System::printUserPlaylist()
+void System::printUserPlaylist()const
 {
 	if (userInSystem)
 	{
